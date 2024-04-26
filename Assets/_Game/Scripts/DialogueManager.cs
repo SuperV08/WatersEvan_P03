@@ -19,8 +19,13 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
 
+    [Header("Text Customization")]
+
+    private TextData _data;
+
     private TextMeshProUGUI _text;
-    [SerializeField] Color _textColor = Color.white;
+    [SerializeField] Color _textColor;
+    [SerializeField] TMP_FontAsset _font;
 
     public bool dialogueIsPlaying { get; private set; }
 
@@ -30,6 +35,8 @@ public class DialogueManager : MonoBehaviour
     {
         //change text color
         _text.color = _textColor;
+        _text.font = _font;
+        _text.fontStyle = _fontStyle;
         
         
         //prevent multiple Dialogue Managers in the scene
