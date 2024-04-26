@@ -572,6 +572,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 5160749758598756778, guid: 8bd76622b1299c34faa6262af521f8a7,
+        type: 3}
+      propertyPath: m_text
+      value: Sad NPC
+      objectReference: {fileID: 0}
     - target: {fileID: 5160749760384227191, guid: 8bd76622b1299c34faa6262af521f8a7,
         type: 3}
       propertyPath: inkJSON
@@ -790,6 +795,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8983225874208841914, guid: 994123a1c7d6eb440a89205f67ccc1dd,
     type: 3}
   m_PrefabInstance: {fileID: 8983225873404917230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1836392563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6666177395284262820, guid: 71201f0bb53e6bd4087bb989abe32ea5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6666177395896051409}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1867132894
 GameObject:
@@ -1083,6 +1094,11 @@ PrefabInstance:
       objectReference: {fileID: 885012874}
     - target: {fileID: 3767779370542803322, guid: 9fbe1ea65e035d2449dee522fbad695c,
         type: 3}
+      propertyPath: choices.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3767779370542803322, guid: 9fbe1ea65e035d2449dee522fbad695c,
+        type: 3}
       propertyPath: choices.Array.data[0]
       value: 
       objectReference: {fileID: 67133422}
@@ -1091,6 +1107,11 @@ PrefabInstance:
       propertyPath: choices.Array.data[1]
       value: 
       objectReference: {fileID: 489037638}
+    - target: {fileID: 3767779370542803322, guid: 9fbe1ea65e035d2449dee522fbad695c,
+        type: 3}
+      propertyPath: choices.Array.data[2]
+      value: 
+      objectReference: {fileID: 1836392563}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbe1ea65e035d2449dee522fbad695c, type: 3}
 --- !u!1001 &6666177395896051409
@@ -1294,6 +1315,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8983225874208841917, guid: 994123a1c7d6eb440a89205f67ccc1dd,
+        type: 3}
+      propertyPath: m_FirstSelected
+      value: 
+      objectReference: {fileID: 67133422}
     - target: {fileID: 8983225874208841919, guid: 994123a1c7d6eb440a89205f67ccc1dd,
         type: 3}
       propertyPath: m_Name

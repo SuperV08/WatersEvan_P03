@@ -36,7 +36,6 @@ public class DialogueManager : MonoBehaviour
         //change text color
         _text.color = _textColor;
         _text.font = _font;
-        _text.fontStyle = _fontStyle;
         
         
         //prevent multiple Dialogue Managers in the scene
