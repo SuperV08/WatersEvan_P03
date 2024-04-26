@@ -27,7 +27,9 @@ public class DialogueTrigger : MonoBehaviour
             _visualCue.SetActive(true);
             if (Keyboard.current.eKey.wasPressedThisFrame)
             {
+                //Initiate Interaction on Button Press
                 Debug.Log(inkJSON.text);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
         }
         else
