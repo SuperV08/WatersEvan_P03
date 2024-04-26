@@ -4,21 +4,32 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
     [Header("Dialogue UI")]
     [SerializeField] private GameObject _dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    
+
+    [Header("Choices UI")]
+
+    [SerializeField] private GameObject[] choices;
+    private TextMeshProUGUI[] choicesText;
+
     private static DialogueManager instance;
 
     private Story currentStory;
 
-    private bool dialogueIsPlaying;
+    [SerializeField] private TextMeshProUGUI _text;
+
+    public bool dialogueIsPlaying { get; private set; }
 
     private void Awake()
     {
+        _text.color = Color.white;
+        
+        
         //prevent multiple Dialogue Managers in the scene
         if(instance != null)
         {
@@ -36,6 +47,14 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         _dialoguePanel.SetActive(false);
+
+        choicesText = new TextMeshProUGUI[choices.Length];
+        int index = 0;
+        foreach (GameObject choice in choices)
+        {
+            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
+            index++;
+        }
     }
 
     private void Update()
@@ -65,12 +84,14 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            ExitDialogueMode();
+            StartCoroutine(ExitDialogueMode());
         }
     }
 
-    private void ExitDialogueMode()
+    private IEnumerator ExitDialogueMode()
     {
+        yield return new WaitForSeconds(0.2f);
+        
         dialogueIsPlaying = false;
         _dialoguePanel.SetActive(false);
         dialogueText.text = "";
@@ -82,11 +103,61 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
+            //Set text for current line of dialogue
             dialogueText.text = currentStory.Continue();
+            //display choices, if any
+            DisplayChoices();
         }
         else
         {
-            ExitDialogueMode();
+            StartCoroutine(ExitDialogueMode());
+        }
+
+    }
+
+    private void DisplayChoices()
+    {
+        List<Choice> currentChoices = currentStory.currentChoices;
+
+        //check if enough UI is available for implmented choices
+        if (currentChoices.Count > choices.Length)
+        {
+            Debug.LogError("More choices given than the UI can support. Number ofchoices given: " + currentChoices.Count);
+        }
+
+        int index = 0;
+        //enable and initialize the choices upto the amount of choices for this line of dialogue
+        foreach (Choice choice in currentChoices)
+        {
+            choices[index].gameObject.SetActive(true);
+            choicesText[index].text = choice.text;
+            index++;
+        }
+        //go through remaining choices the UI supports and make sure they are hidden
+        for (int i = index; i < choices.Length; i++)
+        {
+            choices[i].gameObject.SetActive(false);
+        }
+
+        StartCoroutine(SelectFirstChoice());
+    }
+
+    private IEnumerator SelectFirstChoice()
+    {
+        //clear first
+        //wait for frame
+        EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+    }
+
+    public void MakeChoice(int choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        // handle continuing to the next line in the dialogue when submit is pressed
+        if (currentStory.currentChoices.Count == 0 && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            ContinueStory();
         }
     }
 }

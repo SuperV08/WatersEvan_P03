@@ -36,6 +36,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        //halts movement when dialogue is playing
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
+
         _rb.velocity = new Vector2(moveDirection.x * _moveSpeed, moveDirection.z * _moveSpeed);
     }
 }

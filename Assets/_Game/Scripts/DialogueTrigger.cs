@@ -22,7 +22,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange)
+        if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             _visualCue.SetActive(true);
             if (Keyboard.current.eKey.wasPressedThisFrame)
