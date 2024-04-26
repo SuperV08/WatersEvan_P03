@@ -3,7 +3,9 @@ guid: 8332be0086e90b448af037cba5bc2a3f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _visualCue: {instanceID: 0}
+  - inkJSON: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

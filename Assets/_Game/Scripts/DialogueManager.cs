@@ -17,17 +17,19 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
-    private static DialogueManager instance;
-
     private Story currentStory;
 
-    [SerializeField] private TextMeshProUGUI _text;
+    private TextMeshProUGUI _text;
+    [SerializeField] Color _textColor = Color.white;
 
     public bool dialogueIsPlaying { get; private set; }
 
+    private static DialogueManager instance;
+
     private void Awake()
     {
-        _text.color = Color.white;
+        //change text color
+        _text.color = _textColor;
         
         
         //prevent multiple Dialogue Managers in the scene

@@ -171,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 14148458}
   m_Layer: 0
-  m_Name: NPC_Happy
+  m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1609,6 +1609,7 @@ MonoBehaviour:
   choices:
   - {fileID: 67133422}
   - {fileID: 489037638}
+  _textColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,7 +2443,7 @@ GameObject:
   - component: {fileID: 1458391581}
   - component: {fileID: 1458391580}
   m_Layer: 0
-  m_Name: NPC_Happy_Art
+  m_Name: NPC_Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3058,7 +3059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visualCue: {fileID: 1794185883}
-  inkJSON: {fileID: 4900000, guid: f299fb082d1feb049a6b970a8dbfc775, type: 3}
+  inkJSON: {fileID: 4900000, guid: 86315e48e93a3d748931c3bd8259c961, type: 3}
 --- !u!1 &2088110289
 GameObject:
   m_ObjectHideFlags: 0
